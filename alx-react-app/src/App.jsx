@@ -19,6 +19,8 @@ function App() {
     <Footer />
 
     <UserProfile name="Alice" age="25" bio="Loves hiking and photography" />
+    <UserProfile name="Ahley" age="23" bio="Loves Dancing" />
+    <UserProfile name="Shello" age="20" bio="Loves comedy" />
 
       {/* <div>
         <a href="https://vite.dev" target="_blank">
