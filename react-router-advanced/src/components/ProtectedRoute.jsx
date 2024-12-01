@@ -1,7 +1,9 @@
+import React from 'react';
 import { BrowserRouter as Router, Route, Redirect, Switch } from 'react-router-dom';
+import { Navigate } from 'react-router-dom';
 
 // Function that checks if the user is authenticated
-const isAuthenticated = () => {
+const useAuth = () => {
     // Replace with your authentication logic, for instance checking if a token exists in local storage
     return localStorage.getItem('authToken') !== null;
 };
@@ -11,12 +13,12 @@ const PrivateRoute = ({ component: Component, ...rest }) => (
     <Route
         {...rest}
         render={props =>
-            isAuthenticated() ? (
+            useAuth() ? (
                 // If authenticated, render the component
                 <Component {...props} />
             ) : (
                 // If not authenticated, redirect to the login page
-                <Redirect to="/login" />
+                <Navigate to="/login" />
             )
         }
     />
