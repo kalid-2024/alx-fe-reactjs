@@ -10,10 +10,10 @@ const Dashboard = () => {
             <h2>Dashboard</h2>
             <ul>
                 <li>
-                    <Link to={`${url}/profile`}>Profile</Link>
+                    <Link to={`${url}/ProfileDetails`}>ProfileDetails</Link>
                 </li>
                 <li>
-                    <Link to={`${url}/settings`}>Settings</Link>
+                    <Link to={`${url}/ProfileSettings`}>ProfileSettings</Link>
                 </li>
             </ul>
 
@@ -24,11 +24,11 @@ const Dashboard = () => {
                     <h3>Please select an option.</h3>
                 </Route>
                 {/* Nested route for Profile */}
-                <Route path={`${path}/profile`}>
+                <Route path={`${path}/ProfileDetails`}>
                     <Profile />
                 </Route>
                 {/* Nested route for Settings */}
-                <Route path={`${path}/settings`}>
+                <Route path={`${path}/ProfileSettings`}>
                     <Settings />
                 </Route>
             </Switch>
@@ -37,12 +37,12 @@ const Dashboard = () => {
 };
 
 // Profile component
-const Profile = () => <h3>Profile</h3>;
+const ProfileDetails = () => <h3>ProfileDetails</h3>;
 
 // Settings component
-const Settings = () => <h3>Settings</h3>;
+const ProfileSettings = () => <h3>ProfileSettings</h3>;
 
-const NestedRoutesExample = () => (
+const NestedRoutes = () => (
     <Router>
         <div>
             <nav>
@@ -60,4 +60,4 @@ const NestedRoutesExample = () => (
     </Router>
 );
 
-export default NestedRoutesExample;
+export default NestedRoutes;
