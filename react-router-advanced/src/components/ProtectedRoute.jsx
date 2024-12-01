@@ -22,7 +22,7 @@ const PrivateRoute = ({ component: Component, ...rest }) => (
     />
 );
 
-const ProtectedRoutes = () => (
+const ProtectedRoute = () => (
     <Router>
         <div>
             <Switch>
@@ -55,4 +55,4 @@ const Login = () => {
 // Simple Dashboard component
 const Dashboard = () => <h2>Dashboard</h2>;
 
-export default ProtectedRoutes;
+export default ProtectedRoute;
