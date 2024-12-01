@@ -13,7 +13,8 @@ function App() {
 
       <Routes>
           <Route path="/"  element={<App />} />
-          <BlogPost/>
+          <Route path="/blog/:id"  element={<BlogPost/>} />
+              
       </Routes>
 
     </Router>
