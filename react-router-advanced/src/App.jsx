@@ -1,7 +1,8 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
 import './App.css';
-import DynamicRouting from './components/userProfiles'
+import DynamicRouting from './components/BlogPost'
+import BlogPost from './components/BlogPost';
 
 function App() {
   
@@ -12,7 +13,7 @@ function App() {
 
       <Routes>
           <Route path="/"  element={<App />} />
-          <DynamicRouting/>
+          <BlogPost/>
       </Routes>
 
     </Router>
