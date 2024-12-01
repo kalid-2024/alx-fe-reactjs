@@ -4,8 +4,7 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "test": "jest",
-    "build": "babel src -d lib"
+    "test": "jest"
   },
   "dependencies": {
     "react": "^18.3.1",
