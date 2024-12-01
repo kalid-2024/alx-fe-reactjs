@@ -1,3 +1,4 @@
+import React from 'react';
 import { useQuery } from 'react-query';
 
 // Define a fetch function that can be used to fetch data from an API
@@ -24,9 +25,14 @@ const PostsComponent = () => {
     // Render the fetched data
     return (
         <div>
+            <button onClick={refetch} disabled={isFetching}>
+                {isFetching ? 'Refreshing...' : 'Refresh Posts'}
+            </button>
+
             {data.map(item => (
                 <div key={item.id}>{item.name}</div>
             ))}
+
         </div>
     );
 };
