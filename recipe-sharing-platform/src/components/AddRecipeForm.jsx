@@ -1,10 +1,11 @@
 import { useState } from "react";
 
 
-const AddRecipeForm = () => {
+function AddRecipeForm() {
     const [title, setTitle] = useState('');
     const [ingredients, setIngredients] = useState('');
     const [instructions, setInstructions] = useState('');
+    const [steps, setSteps] = useState('');
     const [errors, setErrors] = useState({});
   
     const handleSubmit = (e) => {
@@ -13,6 +14,7 @@ const AddRecipeForm = () => {
       if (!title) newErrors.title = 'Title is required';
       if (!ingredients) newErrors.ingredients = 'Ingredients are required';
       if (!instructions) newErrors.instructions = 'Instructions are required';
+      if (!steps) newErrors.steps = 'Steps are required';
       setErrors(newErrors);
       if (Object.keys(newErrors).length > 0) return;
   
@@ -21,12 +23,14 @@ const AddRecipeForm = () => {
         id: Date.now(),
         title,
         ingredients: ingredients.split('\n'),
-        instructions
+        instructions,
+        steps: steps.split('\n')
       };
       console.log('Submitted recipe:', newRecipe);
       setTitle('');
       setIngredients('');
       setInstructions('');
+      setSteps('');
     };
   
     return (
@@ -62,6 +66,16 @@ const AddRecipeForm = () => {
               className="w-full p-2 border rounded" 
             />
             {errors.instructions && <p className="text-red-500 text-sm">{errors.instructions}</p>}
+          </div>
+  
+          <div>
+            <label className="block text-sm font-medium mb-1">Steps (one per line)</label>
+            <textarea 
+              value={steps} 
+              onChange={(e) => setSteps(e.target.value)} 
+              className="w-full p-2 border rounded" 
+            />
+            {errors.steps && <p className="text-red-500 text-sm">{errors.steps}</p>}
           </div>
   
           <button type="submit" className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">Submit</button>
