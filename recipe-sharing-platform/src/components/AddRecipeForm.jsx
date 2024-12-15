@@ -43,9 +43,9 @@ function AddRecipeForm() {
     };
   
     return (
-      <div className="p-4">
+      <div className="p-4  shadow-lg " >
         <h1 className="text-2xl font-bold mb-4">Add New Recipe</h1>
-        <form onSubmit={handleSubmit} className="space-y-4">
+        <form onSubmit={handleSubmit} className="space-y-4  shadow-lg sm:p-4 md:p-8 sm:max-w-xs md:max-w-sm">
           <div>
             <label className="block text-sm font-medium mb-1">Title</label>
             <input 
