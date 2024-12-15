@@ -8,15 +8,22 @@ function AddRecipeForm() {
     const [steps, setSteps] = useState('');
     const [errors, setErrors] = useState({});
   
+    // Centralized validation function
+    const validate = () => {
+      const newErrors = {};
+      if (!title.trim()) newErrors.title = 'Title is required';
+      if (!ingredients.trim()) newErrors.ingredients = 'Ingredients are required';
+      if (!instructions.trim()) newErrors.instructions = 'Instructions are required';
+      if (!steps.trim()) newErrors.steps = 'Steps are required';
+      return newErrors;
+    };
+  
     const handleSubmit = (e) => {
       e.preventDefault();
-      const newErrors = {};
-      if (!title) newErrors.title = 'Title is required';
-      if (!ingredients) newErrors.ingredients = 'Ingredients are required';
-      if (!instructions) newErrors.instructions = 'Instructions are required';
-      if (!steps) newErrors.steps = 'Steps are required';
+      const newErrors = validate();
       setErrors(newErrors);
-      if (Object.keys(newErrors).length > 0) return;
+      
+      if (Object.keys(newErrors).length > 0) return; // If errors exist, stop form submission
   
       // Simulate form submission
       const newRecipe = {
@@ -27,6 +34,8 @@ function AddRecipeForm() {
         steps: steps.split('\n')
       };
       console.log('Submitted recipe:', newRecipe);
+      
+      // Clear form after submission
       setTitle('');
       setIngredients('');
       setInstructions('');
@@ -83,5 +92,6 @@ function AddRecipeForm() {
       </div>
     );
   }
+  
 
   export default AddRecipeForm
