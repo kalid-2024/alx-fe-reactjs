@@ -3,12 +3,42 @@
       "id": 1,
       "title": "Spaghetti Carbonara",
       "summary": "A classic Italian pasta dish with eggs, cheese, bacon, and black pepper.",
-      "image": "https://via.placeholder.com/150"
-    },
-    {
-      "id": 2,
-      "title": "Chicken Tikka Masala",
-      "summary": "Chunks of grilled chicken (tikka) cooked in a smooth buttery & creamy tomato based gravy.",
-      "image": "https://via.placeholder.com/150"
-    }
+      "image": "https://via.placeholder.com/150",
+      "ingredients": [
+      "200g spaghetti",
+      "100g pancetta",
+      "2 large eggs",
+      "50g grated Parmesan cheese",
+      "2 garlic cloves, minced",
+      "Salt and black pepper to taste",
+      "1 tbsp olive oil"
+    ],
+    "instructions": "1. Cook the spaghetti in a large pot of salted boiling water until al dente. \n2. While the pasta is cooking, heat the olive oil in a pan and fry the pancetta until crisp. Add the garlic and cook for another minute. \n3. In a bowl, whisk the eggs and Parmesan together. \n4. Drain the pasta, reserving some of the pasta water. \n5. Add the pasta to the pan with pancetta and garlic. Turn off the heat. \n6. Quickly pour in the egg and cheese mixture, stirring quickly to create a creamy sauce. Add pasta water if needed to loosen the sauce. \n7. Season with salt and black pepper to taste. Serve immediately."
+  },
+  
+  {
+    "id": 2,
+    "title": "Chicken Tikka Masala",
+    "summary": "Chunks of grilled chicken (tikka) cooked in a smooth buttery & creamy tomato based gravy.",
+    "image": "https://via.placeholder.com/150",
+    "ingredients": [
+    "500g boneless chicken breasts",
+    "1 cup plain yogurt",
+    "1 tbsp lemon juice",
+    "2 tsp ground cumin",
+    "2 tsp ground coriander",
+    "1 tsp ground turmeric",
+    "2 tsp ground paprika",
+    "2 garlic cloves, minced",
+    "1 inch ginger, grated",
+    "1 large onion, chopped",
+    "1 can (400g) crushed tomatoes",
+    "1/2 cup heavy cream",
+    "2 tbsp vegetable oil",
+    "Salt and pepper to taste",
+    "Fresh cilantro for garnish"
+      ],
+  "instructions": "1. Cut the chicken into bite-sized pieces and marinate with yogurt, lemon juice, garlic, ginger, cumin, coriander, turmeric, and paprika for at least 1 hour. \n2. Heat the oil in a large pan and sauté the onions until soft. \n3. Add the marinated chicken to the pan and cook until it’s browned on all sides. \n4. Add the crushed tomatoes, reduce heat, and simmer for 20 minutes. \n5. Stir in the cream and cook for another 5 minutes. \n6. Season with salt and pepper to taste. Garnish with fresh cilantro before serving."
+  }
+
   ]
