@@ -24,6 +24,12 @@ const Search = () => {
     } finally {
       setLoading(false);
     }
+
+    if (!username.trim()) {
+        setError('Please enter a valid GitHub username');
+        setLoading(false);
+        return;
+      }
   };
 
   return (
@@ -57,7 +63,7 @@ const Search = () => {
             <a
               href={userData.html_url}
               target="_blank"
-              rel="noopener noreferrer"
+              rel=""
             >
               View GitHub Profile
             </a>
