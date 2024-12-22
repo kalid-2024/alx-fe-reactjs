@@ -23,7 +23,7 @@ function App() {
 
       <main>
         <Routes>
-          <Route path="/" element={<Search/>} />
+          <Route path="/Search" element={<Search/>} />
           
         </Routes>
       </main>
