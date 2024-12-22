@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import './App.css'
-
+import Search from './components/search'
 
 
 function App() {
@@ -13,7 +13,7 @@ function App() {
     <div>
       <header>
         <h1>
-      Hello World!
+        GitHub User Search Application
         </h1>
         <nav>
 
@@ -23,7 +23,7 @@ function App() {
 
       <main>
         <Routes>
-          <Route path="/" element />
+          <Route path="/" element={<Search/>} />
           
         </Routes>
       </main>
