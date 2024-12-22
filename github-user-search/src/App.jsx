@@ -24,8 +24,7 @@ function App() {
 
       <main>
         <Routes>
-          <Route path="/Search" element={<Search/>} />
-          
+        <Route path="/" element={<Search />} />
         </Routes>
       </main>
 
@@ -36,7 +35,7 @@ function App() {
     </div>
   </Router>
     </>
-  )
+  );
 }
 
 export default App

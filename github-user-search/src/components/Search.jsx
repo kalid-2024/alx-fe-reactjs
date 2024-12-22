@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import {fetchUserData}  from '../services/githubService';
+import fetchUserData from '../services/githubService';
 
 import React, { useState } from 'react';
 import fetchUserData from '../services/githubService';
@@ -64,83 +64,85 @@ const Search = () => {
   return (
     <div className="advanced-search-container p-4">
       <form
-        onSubmit={handleSubmit}
-        className="flex flex-col items-center gap-4"
-      >
-        <input
-          type="text"
-          name="username"
-          value={searchParams.username}
-          onChange={handleChange}
-          placeholder="GitHub Username"
-          className="p-2 border rounded w-full max-w-md"
-        />
-        <input
-          type="text"
-          name="location"
-          value={searchParams.location}
-          onChange={handleChange}
-          placeholder="Location"
-          className="p-2 border rounded w-full max-w-md"
-        />
-        <input
-          type="number"
-          name="minRepos"
-          value={searchParams.minRepos}
-          onChange={handleChange}
-          placeholder="Minimum Repositories"
-          className="p-2 border rounded w-full max-w-md"
-        />
-        <button
-          type="submit"
-          className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
-        >
-          Search
-        </button>
+  onSubmit={handleSubmit}
+  className="flex flex-col items-center gap-4 w-full max-w-lg mx-auto"
+>
+  <input
+    type="text"
+    name="username"
+    value={searchParams.username}
+    onChange={handleChange}
+    placeholder="GitHub Username"
+    className="p-2 border rounded w-full"
+  />
+  <input
+    type="text"
+    name="location"
+    value={searchParams.location}
+    onChange={handleChange}
+    placeholder="Location"
+    className="p-2 border rounded w-full"
+  />
+  <input
+    type="number"
+    name="minRepos"
+    value={searchParams.minRepos}
+    onChange={handleChange}
+    placeholder="Minimum Repositories"
+    className="p-2 border rounded w-full"
+  />
+  <button
+    type="submit"
+    className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
+  >
+    Search
+  </button>
       </form>
 
-      {loading && <p className="mt-4 text-blue-500">Loading...</p>}
-      {error && <p className="mt-4 text-red-500">{error}</p>}
-      {results.length > 0 && (
-        <ul className="results-list mt-4 w-full max-w-md">
-          {results.map((user) => (
-            <li
-              key={user.id}
-              className="p-4 border rounded mb-2 flex items-center"
-            >
-              <img
-                src={user.avatar_url}
-                alt={`${user.login}'s avatar`}
-                className="w-16 h-16 rounded-full"
-              />
-              <div className="ml-4">
-                <h3 className="text-lg font-bold">{user.login}</h3>
-                <p>
-                  <a
-                    href={user.html_url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-blue-500 hover:underline"
-                  >
-                    View GitHub Profile
-                  </a>
-                </p>
-              </div>
-            </li>
-          ))}
-        </ul>
-      )}
+  
+{results.length > 0 && (
+  <ul className="results-list mt-4 w-full max-w-lg mx-auto">
+    {results.map((user) => (
+      <li
+        key={user.id}
+        className="p-4 border rounded mb-2 flex items-center"
+      >
+        <img
+          src={user.avatar_url}
+          alt={`${user.login}'s avatar`}
+          className="w-16 h-16 rounded-full"
+        />
+        <div className="ml-4">
+          <h3 className="text-lg font-bold">{user.login}</h3>
+          <p>Location: {user.location || 'N/A'}</p>
+          <p>Repositories: {user.repos || 'N/A'}</p>
+          <a
+            href={user.html_url}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-blue-500 hover:underline"
+          >
+            View GitHub Profile
+          </a>
+        </div>
+      </li>
+    ))}
+  </ul>
+)}
 
-      {hasNextPage && (
-        <button
-          onClick={handleLoadMore}
-          className="mt-4 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
-        >
-          Load More
-        </button>
-      )}
-    </div>
+{hasNextPage && (
+  <button
+    onClick={handleLoadMore}
+    className="mt-4 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
+  >
+    Load More
+  </button>
+)}
+
+  </div>
   );
-};
+  
+}
 
-export default Search;
+
+export default Search

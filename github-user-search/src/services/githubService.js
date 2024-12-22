@@ -1,52 +1,32 @@
 import axios from 'axios';
 
 
-
 const fetchUserData = async ({ username, location, minRepos, page = 1 }) => {
-  let query = '';
+  let query = [];
 
-  // Add username to the query
-  if (username) {
-    query += `${username} in:login`;
-  }
+  if (username) query.push(`${username} in:login`);
+  if (location) query.push(`location:${location}`);
+  if (minRepos) query.push(`repos:>=${minRepos}`);
 
-  // Add location to the query
-  if (location) {
-    query += ` location:${location}`;
-  }
-
-  // Add minimum repository count to the query
-  if (minRepos) {
-    query += ` repos:>${minRepos}`;
-  }
-
-  // GitHub API URL with query and pagination parameters
-  const url = `https://api.github.com/search/users?q=${encodeURIComponent(
-    query
+  const apiUrl = `https://api.github.com/search/users?q=${query.join(
+    '+'
   )}&page=${page}&per_page=30`;
 
-  try {
-    const response = await axios.get(url);
-    const { data, headers } = response;
+  const response = await axios.get(apiUrl);
+  const { data, headers } = response;
 
-    // Parse the Link header for pagination information
-    const links = headers.link
-      ? headers.link.split(',').reduce((acc, link) => {
-          const match = link.match(/<(.*?)>; rel="(.*?)"/);
-          if (match) acc[match[2]] = match[1];
-          return acc;
-        }, {})
-      : {};
+  const links = headers.link
+    ? headers.link.split(',').reduce((acc, link) => {
+        const match = link.match(/<(.*?)>; rel="(.*?)"/);
+        if (match) acc[match[2]] = match[1];
+        return acc;
+      }, {})
+    : {};
 
-    return { users: data.items, total_count: data.total_count, links };
-  } catch (error) {
-    if (error.response?.status === 403) {
-      throw new Error('API rate limit exceeded. Please try again later.');
-    } else {
-      throw new Error('Failed to fetch data. Please try again.');
-    }
-  }
+  return { users: data.items, total_count: data.total_count, links };
 };
 
 
-export default fetchUserData
+export default fetchUserData;
+
+
