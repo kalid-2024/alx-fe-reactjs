@@ -1,5 +1,8 @@
 import React, { useState } from 'react';
-import fetchUserData  from '../services/githubService';
+import {fetchUserData}  from '../services/githubService';
+
+import React, { useState } from 'react';
+import fetchUserData from '../services/githubService';
 
 const Search = () => {
   const [searchParams, setSearchParams] = useState({
@@ -10,6 +13,8 @@ const Search = () => {
   const [results, setResults] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [hasNextPage, setHasNextPage] = useState(false);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -21,11 +26,36 @@ const Search = () => {
     setLoading(true);
     setError(null);
     setResults([]);
+    setCurrentPage(1);
+
     try {
-      const data = await fetchUserData(searchParams);
-      setResults(data.items || []);
+      const { users, links } = await fetchUserData({
+        ...searchParams,
+        page: 1,
+      });
+      setResults(users || []);
+      setHasNextPage(!!links.next);
     } catch (err) {
-      setError('Something went wrong with your search.');
+      setError(err.message || 'Something went wrong with your search.');
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const handleLoadMore = async () => {
+    if (!hasNextPage) return;
+    setLoading(true);
+
+    try {
+      const { users, links } = await fetchUserData({
+        ...searchParams,
+        page: currentPage + 1,
+      });
+      setResults((prev) => [...prev, ...users]);
+      setHasNextPage(!!links.next);
+      setCurrentPage((prev) => prev + 1);
+    } catch (err) {
+      setError('Error loading more results');
     } finally {
       setLoading(false);
     }
@@ -100,9 +130,17 @@ const Search = () => {
           ))}
         </ul>
       )}
+
+      {hasNextPage && (
+        <button
+          onClick={handleLoadMore}
+          className="mt-4 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
+        >
+          Load More
+        </button>
+      )}
     </div>
   );
-}
-
+};
 
 export default Search;
