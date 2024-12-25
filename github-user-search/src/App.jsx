@@ -1,14 +1,14 @@
-import React from 'react';
+import React from 'react'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import './index.css'
 import './App.css'
-import Search from './components/Search'
+import Search from '../components/Search'
+import searchList from '../components/searchlist';
 
 
 function App() {
-  
 
-  return (
+return (
    
   <Router>
     <div>
