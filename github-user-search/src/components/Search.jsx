@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { fetchAdvancedSearchResults } from "../services/githubService";
-
+import {fetchUserData} from '../services/githubService'
 
 
 const Search = () => {
@@ -24,6 +24,16 @@ const Search = () => {
   const handleSearch = async (page = 1) => {
     setLoading(true);
     setError(null);
+    try {
+      const response = await fetchUserData(username);
+      setUserData(response);
+    } catch (err) {
+      setError("Looks like we can't find the user");
+    } finally {
+      setLoading(false);
+    }
+  };
+
     try {
       const query = constructQuery();
       const response = await fetchAdvancedSearchResults(query, page);
